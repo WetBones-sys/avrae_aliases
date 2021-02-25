@@ -1,0 +1,7 @@
+!alias cloud embed {{cc='Skye (Cloud Rune) - Transfer Attack'}}
+{{v=cc_exists(cc) and get_cc(cc)}}
+-title "{{f"{name} {'uses' if v else 'tries to use'} {cc}!"}}"
+-desc "This rune’s magic emulates the deceptiveness of a cloud giant. While wearing or carrying an object inscribed with this rune, you have advantage on Dexterity (Sleight of Hand) checks and Charisma (Deception) checks.
+In addition, when you or a creature you can see within 30 feet of you is hit by an attack roll, you can use your reaction to invoke the rune and cause that attack to target a different creature within 30 feet of you (other than the attacker), using the same roll. This magic can transfer the attack regardless of the attack’s range. Once you invoke the rune, you can’t do so again until you finish a short or long rest."
+{{mod_cc(cc, -1) if v else ""}}
+-f "{{f"{cc}|{cc_str(cc) if cc_exists(cc) else 'None'}"}}"

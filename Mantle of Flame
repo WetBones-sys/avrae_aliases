@@ -1,0 +1,12 @@
+!servalias mof embed {{cc='Mantle of Flame'}}
+{{v=cc_exists(cc) and get_cc(cc)}}
+-title "{{f"{name} {'uses' if v else 'cannot use'} Mantle of Flame!"}}"
+-desc "Starting at 1st level, you can unleash the phoenix fire that blazes within you. As a bonus action, you magically wreathe yourself in swirling fire, as your eyes glow like hot coals. For 1 minute, you gain the following benefits:
+You shed bright light in a 30-foot radius and dim light for an additional 30 feet.
+Any creature takes fire damage equal to your Charisma modifier if it hits you with a melee attack from within 5 feet of you or if it touches you.
+Whenever you roll fire damage on your turn, the roll gains a bonus to equal to your Charisma modifier.
+Once you use this feature, you can’t use it again until you finish a long rest."
+{{mod_cc(cc, -1) if v else ""}}
+{{c.me.add_effect('Mantle of Flame','', 10) if v and (c := combat()) and c.me else ""}}
+-f "{{f"{cc}|{cc_str(cc) if cc_exists(cc) else '*None*'}"}}"
+-footer "!mof - use !mof_dmg as a snippet to add damage | Made by WetBones"

@@ -1,0 +1,11 @@
+!servalias inspiring_smite embed {{cc='Channel Divinity'}}
+{{P,a,i,c  = get("PaladinLevel",0), argparse(&ARGS&), '-i' in &ARGS&, combat()}}
+{{v=cc_exists(cc) and get_cc(cc)}}
+-title "{{f"{name} {'uses' if v else 'cannot use'} {cc} - Inspiring Smite!"}}"
+-desc "After you deal damage to a creature with your Divine Smite feature, you can use your Channel Divinity as a bonus action and distribute temporary hit points to creatures of your choice within 30 ft. of you, which can include you. The total number of temporary hit points equals 2d8 + your Paladin Level, divided among the chosen creatures however you like."
+{{mod_cc(cc, -1) if v else ""}}
+{{sroll = vroll("2d8")}}
+{{rolled_num = vroll("2d8").total + PaladinLevel }}
+-f "{{f"{cc}|{cc_str(cc) if cc_exists(cc) else 'None'}"}}"
+-f "You rolled {{rolled_num}}."
+-footer "!inspiring_smite [-i] | Made by WetBones"

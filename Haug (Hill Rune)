@@ -1,0 +1,7 @@
+!alias hill embed {{cc='Haug (Hill Rune)'}}
+{{v=cc_exists(cc) and get_cc(cc)}}
+-title "{{f"{name} {'uses' if v else 'tries to use'} {cc}!"}}"
+-desc "This rune’s magic bestows a resilience reminiscent of a hill giant. While wearing or carrying an object inscribed with this rune, you have advantage on saving throws against being poisoned, and you have resistance against poison damage. In addition, you can invoke the rune as a bonus action, gaining resistance to bludgeoning, piercing, and slashing damage for 1 minute. Once you invoke the rune, you can’t do so again until you finish a short or long rest."
+{{mod_cc(cc, -1) if v else ""}}
+-f "{{f"{cc}|{cc_str(cc) if cc_exists(cc) else 'None'}"}}"
+{{c.me.add_effect('Haug','-resist bludgeoning -resist slashing -resist piercing', 10) if v and (c := combat()) and c.me else ""}}

@@ -1,0 +1,9 @@
+!servalias spark embed {{cc="Phoenix Spark"}}
+{{v=cc_exists(cc) and get_cc(cc) and not get_hp()}}
+-title "{{f"{name} {'uses' if v else 'cannot use'} Phoenix Spark!"}}"
+-desc -desc "{{" In the face of defeat, it surges outward to preserve you in a fiery roar. If you are reduced to 0 hit points, you can use your reaction to draw on the spark of the phoenix. You are instead reduced to 1 hit point, and each creature within 10 feet of you takes fire damage equal to half your sorcerer level + your Charisma modifier. If you use this feature while under the effects of your Mantle of Flame, this feature instead deals fire damage equal to your sorcerer level + double your Charisma modifier, and your Mantle of Flame immediately ends. Once you use this feature, you can’t use it again until you finish a long rest" if v else "You have more than 0 hit points." if get_hp() else "You can’t use this feature again until you finish a Long Rest." if cc_exists(cc) else "You do not have this ability."}}"
+{{mod_cc(cc, -1) if v else ""}}
+-f "{{f"{cc}|{cc_str(cc) if cc_exists(cc) else '*None*'}"}}"
+{{set_hp(1) if v and not get_hp() else ""}}
+-f "Current Hp: {{get_hp()}}."
+-footer "!spark [-i] | Made by WetBones"
